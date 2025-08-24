@@ -51,6 +51,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'studentperformance12'
-        slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_354bea2daa344cf2b11fc8f4fad041a5 }}
         images: ${{ env.REGISTRY }}/${{ env.IMAGE }}:${{ env.TAG }} 
