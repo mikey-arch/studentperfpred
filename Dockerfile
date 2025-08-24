@@ -1,12 +1,12 @@
-FROM python:3.10-slim-buster
+FROM python:3.10-slim    
 WORKDIR /app
-COPY . /app
 
-RUN apt update -y && apt install awscli -y
+COPY requirements.txt .
+RUN python -m pip install --upgrade pip setuptools wheel \
+ && pip install --no-cache-dir -r requirements.txt
 
-RUN apt-get update && pip install -r requirements.txt
+COPY . .
 
 EXPOSE 8000
 ENV PORT=8000
-
-CMD ["python3", "app.py"]
+CMD ["python", "app.py"]
